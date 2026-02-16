@@ -14,11 +14,13 @@
  */
 export default class Character {
   constructor(level, type = 'generic') {
+    if (new.target === Character) {
+      throw new Error('Нельзя создавать экзмепляры базового класса напрямую');
+    }
     this.level = level;
     this.attack = 0;
-    this.defence = 0;
+    this.defense = 0;
     this.health = 50;
     this.type = type;
-    // TODO: выбросите исключение, если кто-то использует "new Character()"
   }
 }

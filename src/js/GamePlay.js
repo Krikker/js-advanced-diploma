@@ -211,9 +211,11 @@ export default class GamePlay {
       damageEl.textContent = damage;
       damageEl.classList.add('damage');
       cell.appendChild(damageEl);
-
+  
       damageEl.addEventListener('animationend', () => {
-        cell.removeChild(damageEl);
+        if (damageEl.parentNode === cell) {
+          cell.removeChild(damageEl);
+        }
         resolve();
       });
     });
